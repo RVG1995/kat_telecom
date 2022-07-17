@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Все ведомости</title>
+    <style type="text/css">
+    .f14px {
+    font-size: 20px;
+    }
+    .f8px {
+    font-size: 14px;
+    }
+
+    .table1 {
+     border: 1px #ff0000 solid; /* стиль рамки */
+     border-collapse: collapse ; /* убирание задвоенности рамки */
+     text-align: center;
+     vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<table width=100% border=1 class=table1>
+    <thead>
+    <tr>
+        <th>Дата ведомости</th>
+        <th>Дефектная ведомость №</th>
+        <th>Номер договора</th>
+        <th>ФИО</th>
+        <th>Подробности</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for repair in repairs %}
+    <tr>
+        <td>{{ repair.pub_date }}</td>
+        <td>{{ repair.statement }}</td>
+        <td>{{ repair.number_of_contract }}</td>
+        <td>{{ repair.name }}</td>
+        <td><a href="{% url 'console_repair:detail' repair.id %}">Подробнее</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

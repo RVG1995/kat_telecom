@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создание ведомости</title>
+</head>
+<body>
+<form method="POST" class="post-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">
+        Сохранить
+    </button>
+</body>
+</html>
