@@ -4,7 +4,7 @@ from .models import Repair
 
 class RepairAdmin(admin.ModelAdmin):
     list_display = (
-        'pk',
+        'id',
         'statement',
         'number_of_contract',
         'name',
@@ -21,6 +21,7 @@ class RepairAdmin(admin.ModelAdmin):
     )
     list_filter = ('pub_date',)
     empty_value_display = "-пусто-"
+    search_fields = ['name', 'number_of_contract']
 
 
 admin.site.register(Repair, RepairAdmin)
