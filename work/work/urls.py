@@ -22,5 +22,9 @@ urlpatterns = [
              'console_repair.urls',
              namespace='console_repair')
          ),
+    path('order_outfit/',
+         include(
+             'order_outfit.urls',
+             namespace='order_outfit')),
     path('admin/', admin.site.urls),
 ]
