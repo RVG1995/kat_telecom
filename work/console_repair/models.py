@@ -90,7 +90,7 @@ class Repair(models.Model):
         )
 
     def __str__(self):
-        return self.name, self.number_of_contract
+        return self.name
 
     def get_body(self):
         return RepairBodyState(self.body)
