@@ -1,0 +1,108 @@
+
+<!DOCTYPE HTML>
+{% load static %}
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>ЗАКАЗ НАРЯД</title>
+    <style type="text/css">
+
+    .oswmenu {
+        font-size: 12pt;
+        padding: 10px; /* Поля вокруг текста */
+        opacity: .9;
+        z-index: 5;
+	font-family: 'Tahoma', sans-serif;
+	color: #FFFFFF;
+	background-color:#3d85c6;
+    }
+
+    .osw {
+        font-size: 12pt;
+        padding: 10px; /* Поля вокруг текста */
+        opacity: .9;
+        z-index: 5;
+        font-family: 'Oswald', sans-serif;
+    }
+
+
+
+   TABLE {
+	border-collapse: collapse;
+	padding: 0px;
+
+   }
+
+    TD,TH  {
+	border: 1px dashed black;
+	padding: 5px;
+	vertical-align: middle;
+    }
+
+    .TDS  {
+	border: 0px;
+	padding: 5px;
+	vertical-align: middle;
+    }
+
+
+
+</style>
+    <style type="text/css" media="print">
+    @page {
+        size: auto;   /* auto is the initial value */
+        margin: 20;  /* this affects the margin in the printer settings */
+    }
+</style>
+
+</head>
+ <body>
+
+
+    <table width="100%" >
+
+	<tr ><td colspan=6 align=left class="TDS"><a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="{% static 'img/logo_kat.png' %}" alt="" width="100"></a></td><td colspan=6 align=right class="TDS">user</td><tr>
+
+	<tr class="oswmenu" height="40" align="center">
+	    <td><b>№</b></td>
+	    <td><b>ДАТА ПОСТУПЛЕНИЯ</b></td>
+	    <td><b>ДОГОВОР №</b></td>
+	    <td><b>ПРИЧИНА</b></td>
+	    <td><b>К.ТЕЛЕФОН</b></td>
+	    <td><b>ПОСЕЛОК</b></td>
+	    <td><b>КОМЕНТАРИЙ ОТ АБОНЕНТА</b></td>
+	    <td><b>СТАТУС</b></td>
+	    <td><b>ДАТА РЕМОНТА</b></td>
+	    <td><b>КОМЕНТАРИЙ ОТ МОНТАЖНИКОВ</b></td>
+	    <td><b>ОЖИДАНИЕ</b></td>
+	    <td><b>EDIT</b></td>
+	</tr>
+
+
+
+	<tr class="osw" align="center">
+	    <td>1</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>07.07.22</td>
+	    <td>edit</td>
+	</tr>
+
+
+
+    </table>
+
+
+
+
+
+
+ </body>
+</html>

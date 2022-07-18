@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,7 +19,7 @@
      vertical-align: middle;
     }
   </style>
-    <a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="https://kat-telecom.ru/wp-content/uploads/2020/11/cropped-logo_kat-1.png" alt=""></a>
+    <a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="{% static 'img/logo_kat.png' %}" alt="" width="100"></a>
 </head>
 <body>
 <table width=100% border=1 class=table1>

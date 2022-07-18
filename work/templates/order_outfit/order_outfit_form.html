@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Создание заказ наряда</title>
+    <a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="{% static 'img/logo_kat.png' %}" alt="" width="100"></a>
 </head>
 <body>
 <form method="POST" class="post-form">
