@@ -38,7 +38,7 @@
         <td>{{ repair.statement }}</td>
         <td>{{ repair.number_of_contract }}</td>
         <td>{{ repair.name }}</td>
-        <td><a href="{% url 'console_repair:detail' repair.id %}">Подробнее</a></td>
+        <td><a href="{% url 'console_repair:console_detail' repair.id %}">Подробнее</a></td>
     </tr>
     {% endfor %}
     </tbody>

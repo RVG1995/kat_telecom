@@ -88,6 +88,7 @@ class Repair(models.Model):
                 check=models.Q(console__in=ChoicesTypeOfConsole.values)
             ),
         )
+        verbose_name = "Дефектные ведомости"
         verbose_name_plural = "Дефектные ведомости"
 
     def __str__(self):

@@ -22,11 +22,10 @@ def console_repair_all(request):
 
 
 def console_repair_detail(request, repair_id):
-    console = get_object_or_404(Repair, pk=repair_id)
+    console = get_object_or_404(Repair, id=repair_id)
     context = {
         'repair': console,
     }
-    # breakpoint()
     return render(
         request,
         'console_repair/console_repair_detail.html',
