@@ -30,13 +30,15 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'console_repair.apps.ConsoleRepairConfig',
-    'order_outfit.apps.OrderOutfitConfig',
+    'claim.apps.ClaimConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'import_export',
+    'rangefilter',
 ]
 
 MIDDLEWARE = [

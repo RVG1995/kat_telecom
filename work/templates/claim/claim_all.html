@@ -59,9 +59,16 @@
  <body>
 
 
+
+
+
+
+
+
+
     <table width="100%" >
 
-	<tr ><td colspan=6 align=left class="TDS"><a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="{% static 'img/logo_kat.png' %}" alt="" width="100"></a></td><td colspan=6 align=right class="TDS">user</td><tr>
+	<tr ><td colspan=6 align=left class="TDS"><a class="brand" href="{% url 'console_repair:index' %}" title="КАТ-ТЕЛЕКОМ" aria-label="КАТ-ТЕЛЕКОМ"><img src="{% static 'img/logo_kat.png' %}" alt="" width="100"></a></td><td colspan=6 align=right class="TDS">Пользователь: {{ user.username }}</td><tr>
 
 	<tr class="oswmenu" height="40" align="center">
 	    <td><b>№</b></td>
@@ -75,25 +82,25 @@
 	    <td><b>ДАТА РЕМОНТА</b></td>
 	    <td><b>КОМЕНТАРИЙ ОТ МОНТАЖНИКОВ</b></td>
 	    <td><b>ОЖИДАНИЕ</b></td>
-	    <td><b>EDIT</b></td>
+	    <td><b>РЕДАКТИРОВАТЬ</b></td>
 	</tr>
 
-
-
+{% for claim in claims %}
 	<tr class="osw" align="center">
-	    <td>1</td>
+	    <td>{{ claim.id }}</td>
+	    <td>{{ claim.date_of_the_application }}</td>
+	    <td>{{ claim.number_of_contract }}</td>
+	    <td>{{ claim.get_reason.label }}</td>
+	    <td>{{ claim.telephone_number }}</td>
+	    <td>{{ claim.town }}</td>
+	    <td>{{ claim.comment_from_subscriber }}</td>
+		<td>{% if claim.status %}{{ claim.get_status.label }}{% else %}{% endif %}</td>
+	    <td>{{ claim.repair_date }}</td>
+	    <td>{{ claim.comment_from_worker}}</td>
 	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>07.07.22</td>
-	    <td>edit</td>
+	    <td><a href="{% url 'claim:claim_update' claim.id %}"><img src="{% static 'img/edit.png' %}" alt="" width="25"></a></td>
 	</tr>
+		{% endfor %}
 
 
 

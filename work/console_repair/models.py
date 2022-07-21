@@ -34,8 +34,8 @@ class Repair(models.Model):
         (False, 'Отсутсвуют'),
     )
 
-    statement = models.IntegerField("Дефектная ведомость")
-    number_of_contract = models.IntegerField("Номер договора")
+    statement = models.CharField("Дефектная ведомость", max_length=10)
+    number_of_contract = models.CharField("Номер договора", max_length=10)
     name = models.CharField('ФИО', max_length=150)
     fixing = models.BooleanField(
         'Крепежные элементы в порядке',

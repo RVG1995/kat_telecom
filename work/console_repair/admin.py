@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Repair
 
+from rangefilter.filters import DateRangeFilter
+
 
 class RepairAdmin(admin.ModelAdmin):
     list_display = (
@@ -19,7 +21,7 @@ class RepairAdmin(admin.ModelAdmin):
         'description',
         'pub_date',
     )
-    list_filter = ('pub_date',)
+    list_filter = (('pub_date', DateRangeFilter),)
     empty_value_display = "-пусто-"
     search_fields = ['name', 'number_of_contract']
 
