@@ -31,7 +31,7 @@
 <div align=center class=f14px><b>ДЕФЕКТНАЯ ВЕДОМОСТЬ №  от {{ repair.statement }}</b></div>
 <br>
 Номер договора: {{ repair.number_of_contract }}  /  Ф.И.О: {{ repair.name }}  <br>
-Оборудование: {{ repair.get_console.label }} , Серийный номер: {{ repair.serial_number_console }} <br>
+Оборудование: {{ repair.console.get_type.label }} , Серийный номер: {{ repair.console.serial_number}} <br>
 <br>
 
 <b>Описание внешнего вида оборудования:</b><br>
@@ -48,14 +48,14 @@
    <td>Заключение о состоянии оборудования</td>
   </tr>
   <tr>
-   <td>{{ repair.pub_date }}</td>
-   <td>Комплектность: {{ repair.get_console.label }}<br><br>SN:{{ repair.serial_number_console }}</td>
+   <td>{{ repair.pub_date|date:"d E Y" }}</td>
+   <td>Комплектность: {{ repair.console.get_type.label }}<br><br>SN:{{ repair.console.serial_number }}</td>
    <td>Сдача в ремонт</td>
    <td>{{ repair.description }}</td>
   </tr>
   <tr>
-   <td>{{ repair.pub_date }}</td>
-   <td>Комплектность: {{ repair.get_change_console.label }}<br><br>SN:{{ repair.serial_number_change_console }} </td>
+   <td>{{ repair.pub_date|date:"d E Y" }}</td>
+   <td>Комплектность: {{ repair.change_console.get_type.label }}<br><br>SN:{{ repair.change_console.serial_number }} </td>
    <td>Выдача подменного оборудования</td>
    <td><br><br></td></tr>
   <tr>

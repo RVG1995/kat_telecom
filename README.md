@@ -9,6 +9,8 @@ Django==4.0.6
 
 python3 -m venv venv
 
+Dev/kat_telecom/
+
 source venv/bin/activate
 
 

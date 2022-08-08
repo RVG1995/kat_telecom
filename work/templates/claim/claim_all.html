@@ -73,6 +73,7 @@
 	<tr class="oswmenu" height="40" align="center">
 	    <td><b>№</b></td>
 	    <td><b>ДАТА ПОСТУПЛЕНИЯ</b></td>
+		<td><b>ЗАКАЗ НАРЯД</b></td>
 	    <td><b>ДОГОВОР №</b></td>
 	    <td><b>ПРИЧИНА</b></td>
 	    <td><b>К.ТЕЛЕФОН</b></td>
@@ -89,6 +90,7 @@
 	<tr class="osw" align="center">
 	    <td>{{ claim.id }}</td>
 	    <td>{{ claim.date_of_the_application }}</td>
+		<td>{{ claim.order_outfit }}</td>
 	    <td>{{ claim.number_of_contract }}</td>
 	    <td>{{ claim.get_reason.label }}</td>
 	    <td>{{ claim.telephone_number }}</td>
@@ -97,7 +99,7 @@
 		<td>{% if claim.status %}{{ claim.get_status.label }}{% else %}{% endif %}</td>
 	    <td>{{ claim.repair_date }}</td>
 	    <td>{{ claim.comment_from_worker}}</td>
-	    <td>07.07.22</td>
+	    <td>{{ claim.repair_date }} - {{ claim.date_of_the_application }}</td>
 	    <td><a href="{% url 'claim:claim_update' claim.id %}"><img src="{% static 'img/edit.png' %}" alt="" width="25"></a></td>
 	</tr>
 		{% endfor %}

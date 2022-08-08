@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 
 User = get_user_model()
 
@@ -17,6 +18,35 @@ class ChoicesTypeOfConsole(models.TextChoices):
     NTE_RG_1400_G = '4', 'NTE-RG-1400G'
     NTE_RG_1400 = '5', 'NTE-RG-1400'
     NTE_2 = '6', 'NTE-2'
+
+
+class Console(models.Model):
+    type = models.CharField(
+        'Тип приставки абонента',
+        choices=ChoicesTypeOfConsole.choices,
+        max_length=2)
+    serial_number = models.CharField(
+        'Серийный номер №',
+        max_length=50)
+    pub_date = models.DateField(
+        "Дата прихода",
+        default=timezone.now
+    )
+
+    class Meta:
+        ordering = ("-pub_date",)
+        constraints = (
+            models.CheckConstraint(
+                name='valid_console_choice',
+                check=models.Q(type__in=ChoicesTypeOfConsole.values)
+            ),
+        )
+
+    def get_type(self):
+        return ChoicesTypeOfConsole(self.type)
+
+    def __str__(self):
+        return f'{self.get_type().label} - {self.serial_number}'
 
 
 class Repair(models.Model):
@@ -44,6 +74,7 @@ class Repair(models.Model):
     ports_wan = models.BooleanField(
         'Работоспособность портов',
         choices=CHOICES_PORTS_WAN,
+        blank=True,
         null=True,
     )
     stickers = models.BooleanField(
@@ -54,27 +85,25 @@ class Repair(models.Model):
         'Целостность корпуса',
         choices=RepairBodyState.choices,
         max_length=1)
-    console = models.CharField(
-        'Тип приставки абонента',
-        choices=ChoicesTypeOfConsole.choices,
-        max_length=2)
-    serial_number_console = models.CharField(
-        'Серийный номер №',
-        max_length=50)
-    change_console = models.CharField(
-        'Тип подменной приставки',
-        choices=ChoicesTypeOfConsole.choices,
-        max_length=2)
-    serial_number_change_console = models.CharField(
-        'Серийный номер №',
-        max_length=50)
     description = models.TextField(
         'Заключение о состоянии оборудования',
         max_length=200)
-    pub_date = models.DateField(
-        "Дата публикации",
-        auto_now_add=True
+    pub_date = models.DateTimeField(
+        "Дата сдачи в ремонт",
+        auto_now_add=True,
     )
+    console = models.ForeignKey(
+        Console,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True)
+
+    change_console = models.ForeignKey(
+        Console,
+        related_name='change_repair',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True)
 
     class Meta:
         ordering = ("-pub_date",)
@@ -82,10 +111,6 @@ class Repair(models.Model):
             models.CheckConstraint(
                 name='valid_body_state_choice',
                 check=models.Q(body__in=RepairBodyState.values)
-            ),
-            models.CheckConstraint(
-                name='valid_console_choice',
-                check=models.Q(console__in=ChoicesTypeOfConsole.values)
             ),
         )
         verbose_name = "Дефектные ведомости"
@@ -96,9 +121,3 @@ class Repair(models.Model):
 
     def get_body(self):
         return RepairBodyState(self.body)
-
-    def get_console(self):
-        return ChoicesTypeOfConsole(self.console)
-
-    def get_change_console(self):
-        return ChoicesTypeOfConsole(self.change_console)

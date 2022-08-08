@@ -7,7 +7,6 @@ from import_export.admin import ImportExportModelAdmin
 from rangefilter.filters import DateRangeFilter
 
 
-
 class ClaimResource(resources.ModelResource):
     class Meta:
         model = Claim
